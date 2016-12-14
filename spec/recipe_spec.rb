@@ -29,7 +29,7 @@ describe Recipe do
     new_recipe2 = Recipe.create({:name => 'Pie', :ingredients => 'Flour sugar milk', :ratings => 4})
     new_recipe3 = Recipe.create({:name => 'Cookies', :ingredients => 'Flour sugar milk', :ratings => 10})
     new_recipe4 = Recipe.create({:name => 'Cookies', :ingredients => 'Flour sugar milk', :ratings => 1.2})
-    expect(Recipe.order(ratings: :desc)).to eq [new_recipe3, new_recipe, new_recipe2, new_recipe4] 
+    expect(Recipe.order(:ratings => :desc)).to eq [new_recipe3, new_recipe, new_recipe2, new_recipe4] 
   end
 
   it "will find all recipes containing a spefic ingredient" do
