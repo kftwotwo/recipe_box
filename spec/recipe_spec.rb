@@ -14,6 +14,4 @@ describe Recipe do
     expect(new_recipe.tags.push(new_tag, new_tag2, new_tag3)).to(eq(new_recipe.tags))
     expect(Tag.all).to eq [new_tag, new_tag2, new_tag3]
   end
-
-
 end
