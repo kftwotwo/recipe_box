@@ -81,6 +81,11 @@ get('/tags/:id') do
   erb(:tag)
 end
 
+delete('/tags/:id') do
+  Tag.find(params['id'].to_i).destroy
+  redirect '/tags'
+end
+
 patch('/tags/:id') do
   new_tag_name = params['new_tag']
   @tags = Tag.find(params['id'].to_i)
