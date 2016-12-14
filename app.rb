@@ -30,8 +30,11 @@ post('/recipes') do
   new_ingedients = params['ingedients']
   new_instructions = params['instructions']
   new_rating = params['rating']
-  tag = params['tag']
-  @recipes = Recipe.new({:name => new_name, :ingredients => new_ingedients, :instructions => new_instructions, :ratings => new_rating :tag => tag})
+  new_tag = params['tag']
+  @recipes = Recipe.new({:name => new_name, :ingredients => new_ingedients, :instructions => new_instructions, :ratings => new_rating, })
+    # tags.each do |tag|
+    #   (tag_id !='') ?@recipes.tags.push(tag)
+    # end
   if @recipes.save
     redirect "/"
   else
@@ -46,7 +49,8 @@ patch('/recipe/:id') do
   new_recipe_instructions = params["new-instructions"]
   new_recipe_rating = params["new-rating"]
   @recipe = Recipe.find(params["id"].to_i)
-  @recipe.update({:name => new_recipe_name, :ingredients => new_recipe_ingedients, :instructions => new_recipe_instructions, :ratings => new_recipe_rating})
+  tag = params['tag']
+  @recipe.update({:name => new_recipe_name, :ingredients => new_recipe_ingedients, :instructions => new_recipe_instructions, :ratings => new_recipe_rating, :tag => tag})
   @recipes = Recipe.all()
   erb(:recipes)
 end
@@ -54,4 +58,32 @@ end
 delete('/recipe/:id') do
   Recipe.find(params['id'].to_i).destroy
   redirect '/recipes'
+end
+
+post('/tags') do
+  new_tag = params['tag']
+  @tag = Tag.new({:name  => new_tag})
+  if @tag.save
+    redirect "/"
+  else
+    erb(:errors)
+  end
+end
+
+get('/tags') do
+  @tags = Tag.all()
+  erb(:tags)
+end
+
+get('/tags/:id') do
+  @tags = Tag.find(params['id'].to_i)
+  erb(:tag)
+end
+
+patch('/tags/:id') do
+  new_tag_name = params['new_tag']
+  @tags = Tag.find(params['id'].to_i)
+  @tags.update({:name => new_tag_name})
+  @tags = Tag.all()
+  erb(:tags)
 end

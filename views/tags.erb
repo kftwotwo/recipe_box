@@ -1,0 +1,25 @@
+<h3>Recipe List</h3>
+
+<div class="nav">
+  <a href="/">Home</a> |
+  <a href="/recipes">View All Recipes</a> |
+  <a href="/tags">Tags</a>
+</div>
+
+
+<hr>
+
+<% if @tags.any?() %>
+  <h5>Here are your tags:</h5>
+
+  <ul>
+    <% @tags.each() do |tag| %>
+      <li><a href="/tags/<%= tag.id()%>"><%= tag.name() %></a></li>
+    <% end %>
+  </ul>
+
+<% else %>
+
+    <p>There are no tags yet!</p>
+
+<% end %>

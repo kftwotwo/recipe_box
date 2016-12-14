@@ -2,7 +2,8 @@
 
 <div class="nav">
   <a href="/">Home</a> |
-  <a href="/recipes">View All Recipes</a>
+  <a href="/recipes">View All Recipes</a> |
+  <a href="/tags">Tags</a>
 </div>
 
 <hr>
@@ -23,9 +24,18 @@
     <label for="new-rating">Your Rating</label>
     <input type="text" name="rating" id="new-rating" placeholder="ex.   3.5" required>
 
-    <label for="tag">Tags</label>
-    <input type="text" name="tag" id="tag" placeholder="ex. Desert" required>
-
+    <!-- <label for="tag">Tags</label>
+    <input type="text" name="tag" id="tag" placeholder="ex. Desert" required> -->
+    drop down
   </div>
   <button class="btn" type="submit">Create Recipe</button>
+</form>
+
+<hr>
+<br><br>
+
+<form action="/tags" method="post">
+  <label for="tag">New Tag</label>
+  <input type="text" name="tag" id="tag" placeholder="ex. Desert" required>
+  <button type="submit" name="button">Create Tag</button>
 </form>
