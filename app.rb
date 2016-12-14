@@ -11,6 +11,7 @@ after do
 end
 
 get('/') do
+  @tags = Tag.all()
   erb(:index)
 end
 
@@ -20,21 +21,21 @@ get('/recipes') do
 end
 
 get('/recipe/:id') do
-  @recipes = Recipe.find(params.fetch("id").to_i)
+  @recipes = Recipe.find(params.fetch("id").to_i)#finding the object with that id
+  @tags = @recipes.tags
   erb(:recipe_detail)
 end
 
 #Create Recipe
 post('/recipes') do
+  p params
   new_name = params['recipe-name'] #[] are the same as .fetch but defult to nil or NULL
   new_ingedients = params['ingedients']
   new_instructions = params['instructions']
   new_rating = params['rating']
-  new_tag = params['tag']
-  @recipes = Recipe.new({:name => new_name, :ingredients => new_ingedients, :instructions => new_instructions, :ratings => new_rating, })
-    # tags.each do |tag|
-    #   (tag_id !='') ?@recipes.tags.push(tag)
-    # end
+  new_tag = Tag.find(params['tag_id'].to_i)
+  @recipes = Recipe.create({:name => new_name, :ingredients => new_ingedients, :instructions => new_instructions, :ratings => new_rating})
+  @recipes.tags.push(new_tag)
   if @recipes.save
     redirect "/"
   else

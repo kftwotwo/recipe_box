@@ -24,13 +24,19 @@
     <label for="new-rating">Your Rating</label>
     <input type="text" name="rating" id="new-rating" placeholder="ex.   3.5" required>
 
-    <!-- <label for="tag">Tags</label>
-    <input type="text" name="tag" id="tag" placeholder="ex. Desert" required> -->
-    drop down
+    <label>Select a Tag</label><br>
+
+    <% if @tags.any?() %>
+      <select name="tag_id" class="browser-default">
+        <option value=""></option>
+        <% @tags.each() do |tag| %>
+          <option value="<%= tag.id()%>"><%= tag.name() %></option>
+        <% end %>
+      </select><br><br>
+    <% end %>
   </div>
   <button class="btn" type="submit">Create Recipe</button>
 </form>
-
 <hr>
 <br><br>
 

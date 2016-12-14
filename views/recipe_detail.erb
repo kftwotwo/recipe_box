@@ -21,7 +21,12 @@
 
 <h4>Tags:</h4>
 
-<h5><%= @recipes.tags %></h5>
+<% if @tags.any? %>
+<% @tags.each do |tag| %>
+  <%= tag.name %>
+  <% end %>
+<% end %>
+
 
 
 
