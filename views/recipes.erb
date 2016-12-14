@@ -1,7 +1,14 @@
 <h3>Recipe List</h3>
 
+<div class="nav">
+  <a href="/">Home</a> |
+  <a href="/recipes">View All Recipes</a>
+</div>
+
+<hr>
+
 <% if @recipes.any?() %>
-  <h3>Here are your recipes:</h3>
+  <h5>Here are your recipes:</h5>
 
   <ul>
     <% @recipes.each() do |recipe| %>

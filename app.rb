@@ -15,7 +15,7 @@ get('/recipes') do
   erb(:recipes)
 end
 
-get('/recipes/:id') do
+get('/recipe/:id') do
   @recipes = Recipe.find(params.fetch("id").to_i)
   erb(:recipe_detail)
 end
