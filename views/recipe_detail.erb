@@ -20,6 +20,12 @@
 <h5><%= @recipes.ratings %></h5>
 
 
+
+<form action="/recipe/<%= @recipes.id %>" method="post" class="right delete-form">
+ <input name="_method" type="hidden" value="delete">
+ <button type="submit" class="btn red right">Delete</button>
+</form>
+
 <hr>
 <br>
 

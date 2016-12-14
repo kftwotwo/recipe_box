@@ -49,3 +49,8 @@ patch('/recipe/:id') do
   @recipes = Recipe.all()
   erb(:recipes)
 end
+
+delete('/recipe/:id') do
+  Recipe.find(params['id'].to_i).destroy
+  redirect '/recipes'
+end
