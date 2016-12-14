@@ -23,6 +23,7 @@ end
 get('/recipe/:id') do
   @recipes = Recipe.find(params.fetch("id").to_i)#finding the object with that id
   @tags = @recipes.tags
+  @alltags = Tag.all
   erb(:recipe_detail)
 end
 
@@ -50,8 +51,7 @@ patch('/recipe/:id') do
   new_recipe_instructions = params["new-instructions"]
   new_recipe_rating = params["new-rating"]
   @recipe = Recipe.find(params["id"].to_i)
-  tag = params['tag']
-  @recipe.update({:name => new_recipe_name, :ingredients => new_recipe_ingedients, :instructions => new_recipe_instructions, :ratings => new_recipe_rating, :tag => tag})
+  @recipe.update({:name => new_recipe_name, :ingredients => new_recipe_ingedients, :instructions => new_recipe_instructions, :ratings => new_recipe_rating})
   @recipes = Recipe.all()
   erb(:recipes)
 end

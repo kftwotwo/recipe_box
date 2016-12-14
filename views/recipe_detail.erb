@@ -3,6 +3,7 @@
 <div class="nav">
   <a href="/">Home</a> |
   <a href="/recipes">View All Recipes</a>
+  <a href="/tags">Tags</a>
 </div>
 
 <hr>
@@ -55,8 +56,16 @@
       <label for="new-rating">Update Rating</label>
       <input id="new-rating" name="new-rating" type="text">
 
-      <label for="tag">Update Tag</label>
-      <input type="text" name="tag" id="tag">
+      <label>Select a Tag</label><br>
+
+      <% if @alltags.any?() %>
+        <select name="tag_id" class="browser-default">
+          <option value=""></option>
+          <% @alltags.each() do |tag| %>
+            <option value="<%= tag.id()%>"><%= tag.name() %></option>
+          <% end %>
+        </select><br><br>
+      <% end %>
 
       <button type="submit" class="btn">Update</button>
     </form>
