@@ -24,6 +24,14 @@ describe Recipe do
     expect(new_recipe3.ratings).to eq 10
   end
 
+  it "will show the order from least to greatest" do
+    new_recipe = Recipe.create({:name => 'Cookies', :ingredients => 'Flour sugar milk', :ratings => 5.1})
+    new_recipe2 = Recipe.create({:name => 'Pie', :ingredients => 'Flour sugar milk', :ratings => 4})
+    new_recipe3 = Recipe.create({:name => 'Cookies', :ingredients => 'Flour sugar milk', :ratings => 10})
+    new_recipe4 = Recipe.create({:name => 'Cookies', :ingredients => 'Flour sugar milk', :ratings => 1.2})
+    expect(Recipe.order(ratings: :desc)).to eq [new_recipe3, new_recipe, new_recipe2, new_recipe4] 
+  end
+
   it "will find all recipes containing a spefic ingredient" do
     new_recipe = Recipe.create({:name => 'Cookies', :ingredients => 'Flour', :ratings => 5.1})
     new_recipe2 = Recipe.create({:name => 'Pie', :ingredients => 'Flour sugar milk', :ratings => 4})
