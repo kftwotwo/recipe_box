@@ -6,20 +6,22 @@
 </div>
 
 <hr>
+<br>
+<h5>Create a new Recipe</h5>
 
 <form action="/recipes" method="post">
   <div class="form-group">
     <label for="new-recipe-name">New Recipe Name</label>
-    <input type="text" name="new-recipe-name" id="new-recipe-name">
+    <input type="text" name="recipe-name" id="new-recipe-name" required>
 
     <label for="new-ingedients">All Ingedients</label>
-    <input type="text" name="new-ingedients" id="new-ingedients">
+    <input type="text" name="ingedients" id="new-ingedients" required>
 
     <label for="new-instructions">All Instructions</label>
-    <input type="text" name="new-instructions" id="new-instructions">
+    <input type="text" name="instructions" id="new-instructions" required>
 
     <label for="new-rating">Your Rating</label>
-    <input type="text" name="new-rating" id="new-rating">
+    <input type="text" name="rating" id="new-rating" required>
 
   </div>
   <button class="btn" type="submit">Create Recipe</button>

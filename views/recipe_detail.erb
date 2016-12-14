@@ -1,4 +1,4 @@
-<h3>Recipe Detail</h3>
+<h3>Recipe <%= @recipes.name %></h3>
 
 <div class="nav">
   <a href="/">Home</a> |
@@ -9,12 +9,35 @@
 
 <h4>Ingredients:</h4>
 
-<p><%= @recipes.ingredients %></p>
+<h5><%= @recipes.ingredients %></h5>
 
 <h4>Instructions:</h4>
 
-<p><%= @recipes.instructions %></p>
+<h5><%= @recipes.instructions %></h5>
 
 <h4>Rating:</h4>
 
-<p><%= @recipes.ratings %></p>
+<h5><%= @recipes.ratings %></h5>
+
+
+<hr>
+<br>
+
+<h5>Update Recipe</h5>
+    <!-- update Recipe name -->
+    <form action="/recipe/<%= @recipes.id() %>" method="post">
+      <input name="_method" type="hidden" value="patch">
+      <label for="new-name">Update Recipe Name</label>
+      <input id="new-name" name="new-name" type="text">
+
+      <label for="new-ingedients">Update Ingredients</label>
+      <input id="new-ingedients" name="new-ingedients" type="text">
+
+      <label for="new-instructions">Update Intructions</label>
+      <input id="new-instructions" name="new-instructions" type="text">
+
+      <label for="new-rating">Update Rating</label>
+      <input id="new-rating" name="new-rating" type="text">
+
+      <button type="submit" class="btn">Update</button>
+    </form>
