@@ -30,7 +30,8 @@ post('/recipes') do
   new_ingedients = params['ingedients']
   new_instructions = params['instructions']
   new_rating = params['rating']
-  @recipes = Recipe.new({:name => new_name, :ingredients => new_ingedients, :instructions => new_instructions, :ratings => new_rating})
+  tag = params['tag']
+  @recipes = Recipe.new({:name => new_name, :ingredients => new_ingedients, :instructions => new_instructions, :ratings => new_rating :tag => tag})
   if @recipes.save
     redirect "/"
   else
