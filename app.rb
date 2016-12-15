@@ -52,8 +52,9 @@ patch('/recipe/:id') do
   new_recipe_rating = params["new-rating"]
   @recipe = Recipe.find(params["id"].to_i)
   @recipe.update({:name => new_recipe_name, :ingredients => new_recipe_ingedients, :instructions => new_recipe_instructions, :ratings => new_recipe_rating})
-  @recipes = Recipe.all()
-  erb(:recipes)
+  @recipe.tags.destroy_all
+  @recipe.tags.push(Tag.find(params["tag_id"]))
+  redirect '/recipes'
 end
 
 delete('/recipe/:id') do

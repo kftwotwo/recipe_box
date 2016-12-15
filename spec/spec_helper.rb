@@ -6,14 +6,10 @@ require('./lib/recipe')
 require('./lib/tag')
 
 RSpec.configure do |config|
-  config.after(:each) do
+  config.before(:each) do
 
-    Recipe.all().each() do |recipe|
-      recipe.destroy()
-    end
+    Recipe.destroy_all
 
-    Tag.all().each() do |tag|
-      tag.destroy()
-    end
+    Tag.destroy_all
   end
 end
